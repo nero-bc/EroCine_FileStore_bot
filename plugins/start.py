@@ -87,7 +87,14 @@ async def start_command_handler(client, message):
                                  file_id = int(b64_to_str(usr_cmd).split("_")[-1])
                              except (Error, UnicodeDecodeError):
                                  file_id = int(usr_cmd.split("_")[-1])
-                             await db.save_file_id(message.from_user.id, file_id)        
+                             file_id_saved =  await db.get_file_id(message.from_user.id)
+                             if file_id_saved:
+                                  try:                                       
+                                       await db.delete_file_id(message.from_user.id)
+                                  except:        
+                                       pass                                       
+                             else:
+                                  await db.save_file_id(message.from_user.id, file_id)        
                              try:
                                  invite_link = await client.create_chat_invite_link(FORCE_CHANNEL, creates_join_request=True)
                              except Exception:
