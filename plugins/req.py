@@ -22,9 +22,12 @@ async def join_reqs(client, message: ChatJoinRequest):
         message_ids.append(int(GetMessage.id))
     for i in range(len(message_ids)):
         await send_media_and_reply(client, user_id=message.from_user.id, file_id=int(message_ids[i]))
-    
-    await db.delete_file_id(message.from_user.id)
 
+  try:
+        await db.delete_file_id(user_id)
+    except:        
+        pass
+      
 @Bot.on_message(filters.command("delreq") & filters.private & filters.user(Config.BOT_OWNER))
 async def del_requests(client, message):
     
