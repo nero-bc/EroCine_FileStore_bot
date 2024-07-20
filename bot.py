@@ -10,7 +10,21 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 # Set the log file name
-LOG_FILE_NAME = "Rkbots_log_file.log"
+LOG_FILE_NAME = "Rkbotz_log_file.log"
+
+# Custom get_peer_type function
+def get_peer_type(peer_id: int) -> str:
+    peer_id_str = str(peer_id)
+    if not peer_id_str.startswith("-"):
+        return "user"
+    elif peer_id_str.startswith("-100"):
+        return "channel"
+    else:
+        return "chat"
+
+# Monkey patching the function
+import pyrogram.utils as utils
+utils.get_peer_type = get_peer_type
 
 # Logging configuration
 logging.basicConfig(
