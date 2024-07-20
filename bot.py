@@ -10,7 +10,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 # Set the log file name
-LOG_FILE_NAME = "Rkbotz_log_file.log"
+LOG_FILE_NAME = "Rkbots_log_file.log"
 
 # Logging configuration
 logging.basicConfig(
