@@ -21,7 +21,7 @@ class Config(object):
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7273754371:AAFfZV3Y0IMkBObAlq51KzfE8OwUu4YSdFw")
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "Filestore1_bot")
     DB_CHANNEL = int(os.environ.get("DB_CHANNEL", "-1002229157684"))
-    BOT_OWNER = int(os.environ.get("BOT_OWNER", "2145003945"))
+    BOT_OWNER = [int(id) for id in os.environ.get("BOT_OWNER", "2145003945,1076927614").split(',')]
     DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://anujkumarverma175:Akv2@cluster0.nk3nexm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     DATABASE_NAME = os.environ.get("DATABASE_NAME", "FilmCity_English")
     #UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "-1001848348787")
